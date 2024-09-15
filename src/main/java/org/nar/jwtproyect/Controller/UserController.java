@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/users")
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
@@ -38,10 +38,10 @@ public class UserController {
 
     @PostMapping("/register")
     ResponseEntity<?> register( @Valid  @RequestBody User user, BindingResult result){
+ // antes de guardar validamos que no sea admin
         if(result.hasFieldErrors()){
             return validation(result);
         }
- // antes de guardar validamos que no sea admin
         user.setAdmin(false);
         return  ResponseEntity.status(HttpStatus.CREATED).body(this.userService.save(user));
     }
