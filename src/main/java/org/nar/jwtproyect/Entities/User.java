@@ -13,6 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table (name = "user")
 @EqualsAndHashCode(of={"id","username"})
@@ -23,7 +24,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
-//    @ExistsByUsername
+
+    @ExistsByUsername
     @Column(unique = true)
     @NotBlank(message = "no vacio")
 
@@ -47,7 +49,7 @@ public class User {
 //campo no mapeado a la tabla// bandera
     // propio de la clase no de la BD
     @Transient
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // solo se muestra para editar
+// solo se muestra para editar
     private boolean admin;
 
 

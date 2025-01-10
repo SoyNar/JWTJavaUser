@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//corts angular y cualquier ruta
+@CrossOrigin(origins = "http://localhost:4200",originPatterns = "*")//cualquier ruta
 @RestController
 @RequestMapping("/api/users")
 public class UserController {

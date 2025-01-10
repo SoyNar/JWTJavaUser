@@ -37,6 +37,7 @@ public class UserServiceImpl  implements IUserService {
     @Transactional
     public User save(User user) {
         //todo usuario tiene role user
+
         Optional<Role> optionaRoleUser = roleRepository.findByName("ROLE_USER");
         // lista de roles para pasarla al user
         List<Role> roles  = new ArrayList<>();
@@ -56,9 +57,8 @@ public class UserServiceImpl  implements IUserService {
 
 
 
-
     @Override
-    public boolean existsByUserName(String username) {
+    public boolean existsByUsername(String username) {
         return userRepository.existsByUsername(username);
     }
 }
